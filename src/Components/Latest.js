@@ -117,33 +117,65 @@ export default function Latest (props){
     }
       
   
-  const cakes = props.data.map((cake)=>{
+ 
+
+  function sortCakes(filter){
+
+    if( filter ==="LOW_TO_HIGH"){
+        props.data.sort((a,b)=> a.cost- b.cost)
+      
+    }
+
+
+
+
+
+
+    const cakes = props.data.map((cake)=>{
      
-      return(
-          <div className="cake">
-              <figure className="cake__img-wrapper">
-                  <img className="cake__img" src={cake.img} alt={`${cake.title} picture`}/>
-              </figure>
-              <div className="cake__title" >
-             {cake.title}
-              </div>
-              <div className="cake__rating">
-              
-              {stars(cake.rating)}
-              <div> 
-                  <p>({cake.rating})</p>
-              </div>
-             
-              </div>
-              
-             <div className="cake__price"><span className="latest">${cake.cost}</span></div>
+        return(
+            <div className="cake">
+                <figure className="cake__img-wrapper">
+                    <img className="cake__img" src={cake.img} alt={`${cake.title} picture`}/>
+                </figure>
+                <div className="cake__title" >
+               {cake.title}
+                </div>
+                <div className="cake__rating">
+                
+                {stars(cake.rating)}
+                <div> 
+                    <p>({cake.rating})</p>
+                </div>
+               
+                </div>
+                
+               <div className="cake__price"><span className="latest">${cake.cost}</span></div>
+    
+               
+            </div>
+        )
+    })
+
+
+    return cakes
+
+
+}
+
   
-             
-          </div>
-      )
-  })
+
   
+  function filterCakes(event){
+    sortCakes(event.target.value)
+
+  }
   
+
+//22.58
+
+
+
   
       return (
           <section id='latest'>
@@ -151,7 +183,7 @@ export default function Latest (props){
       <div className="big-row">
       <div className="cakes__header">
       <h2 className="latest cake__header--title">All <span className="neon-blue">Cakes</span></h2>
-      <select id="filter">
+      <select id="filter" onChange={filterCakes}>
         <option value="" disabled selected>Sort</option>
         <option value="LOW_TO_HIGH">Price, Low to High</option>
         <option value="HIGH_TO_LOW">Price, High to Low</option>
@@ -160,7 +192,7 @@ export default function Latest (props){
       </div>
       
       <div className="cakes-container ">
-          {cakes}
+          {sortCakes()}
       </div>
       </div>
   </div>
