@@ -99,7 +99,7 @@ button:active{
 
 /* NAV */
 nav{
-  height: 80px;
+  height: 200px;
   display: flex;
   padding-bottom:160px;
   background-color:#C57B57;
@@ -111,11 +111,11 @@ padding: 0 24px;
 display: flex;
 justify-content: space-between;
 align-items: center;
-margin: 0 auto;
+margin: 40px auto 0 auto;
 }
 
 .logo__container{
-margin-top: 100px;
+margin-top: 140px;
 width: 120px;
 
 }
@@ -358,6 +358,9 @@ color: #fabf2a;
 .cake__rating{
   display: flex;
 }
+.cake__price{
+  color: #242424;
+}
 .cake__price-sale{
   text-decoration: line-through ;
   padding-right: 6px;
@@ -389,6 +392,25 @@ select{
 }
 .latest {
   color: black;
+}
+
+
+
+
+
+.fa-spinner{
+  animation:  rotate  600ms  infinite linear;
+  font-size: 100px;
+  color: #9CFFD9;
+}
+
+@keyframes rotate {
+  0%{
+    transform: rotate(0);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
 }
 
 
